@@ -1,3 +1,6 @@
+# Trying out Argo Rollouts in OpenShift GitOps 1.9
+##### Gerald Nunn, Abhishek Veeramalla, Harriet Lawrence
+
 ### Introduction
 
 OpenShift Rollouts is included in OpenShift GitOps 1.9 as a Technical Preview release. Argo Rollouts is a drop-in alternative to Deployments that supports advanced progressive delivery strategies such as blue-green and canary. While Deployments support a rollout strategy, this strategy provides limited control and tuning over the progression of the new pods and does not support the advanced strategies that organizations have come to expect in cloud-native applications.
@@ -26,7 +29,7 @@ The downside of blue-green is that it requires more capacity, you must have enou
 
 **Canary**. The canary strategy is a variation on blue-green named after the proverbial [canary in the coal mine](https://en.wikipedia.org/wiki/Sentinel_species#Canaries_in_coal_mines). In this deployment strategy we again deploy a new version of the application alongside the old one, however instead of cutting all traffic over at once we slowly let traffic migrate to the new version over specified intervals or steps.
 
-As the amount of live traffic increases on the new version we can monitor the new version to ensure that no unexpected problems occur such as performance issues or regressions in functionality.
+As the amount of live traffic increases on the new version we can monitor the new version to check that no unexpected problems occur such as performance issues or regressions in functionality.
 
 ![alt text](https://raw.githubusercontent.com/gnunn-gitops/blogs/main/openshift-gitops-rollouts/img/canary.png)
 
