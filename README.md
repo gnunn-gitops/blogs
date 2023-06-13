@@ -1,0 +1,1 @@
+Collection of blogs for publishing at Red Hat Hybrid Cloud Blog
