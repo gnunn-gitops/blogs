@@ -130,7 +130,7 @@ Becomes this:
 
 With regards to OpenShift Service Mesh, it is possible to configure the prometheus instance deployed by its operator with a username and password, this can then be used in the Prometheus provider as part of the URL, for example:
 
-https://<user>:<password>@prometheus.istio-system.svc.cluster.local:9090
+    https://<user>:<password>@prometheus.istio-system.svc.cluster.local:9090
 
 ### Feedback
 
