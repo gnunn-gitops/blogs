@@ -8,7 +8,7 @@ Secrets management when using GitOps to manage Kubernetes clusters and applicati
 1. Encrypting secrets in git. Sealed Secrets and Mozilla SOP are examples of this
 2. Externalizing secrets. Solutions like the Hashicorp’s Vault or using a cloud providers key management solutions coupled with the External Secrets Operator or the Secrets CSI Driver are examples of this.
 
-I recently acquired a second server in my homelab and while I was relatively satisfied with SealedSecrets as a simple way to manage secrets the second server increased my desire to examine externalizing my secrets.
+I recently acquired a second server in my homelab and while I was relatively satisfied with SealedSecrets as a simple way to manage secrets the second server increased my desire to examine externalizing my secrets for benefits around centralization.
 
 Since this was for a homelab scenario, keeping costs to a minimum is important and as a result I settled on using the External Secrets Operator (ESO) along with the [Doppler](http://doppler.com) provider as the back-end for a completely free solution. The Secrets CSI driver is a fine solution as well but at the time of this writing the only free provider it supported was community Vault which requires significant effort to setup.
 
