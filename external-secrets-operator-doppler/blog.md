@@ -12,7 +12,7 @@ I recently acquired a second server in my homelab and while I was relatively sat
 
 Since this was for a homelab scenario, keeping costs to a minimum is important and as a result I settled on using the External Secrets Operator (ESO) along with the [Doppler](http://doppler.com) provider as the back-end for a completely free solution. The Secrets CSI driver is a fine solution as well but at the time of this writing the only free provider it supported was community Vault which requires significant effort to setup.
 
-In this blog we will look at how to set up ESO in our cluster to access secrets in Doppler. While Doppler is being used here, much of what is shown will be equally applicable to other providers. A complete list of providers that ESO supports is available [here]((https://external-secrets.io/latest/provider/aws-secrets-manager/) and the specific documentation on using Doppler as a provider is available [here](https://external-secrets.io/latest/provider/doppler/).
+In this blog we will look at how to set up ESO in our cluster to access secrets in Doppler. While Doppler is being used here, much of what is shown will be equally applicable to other providers. A complete list of providers that ESO supports is available [here](https://external-secrets.io/latest/provider/aws-secrets-manager/) and the specific documentation on using Doppler as a provider is available [here](https://external-secrets.io/latest/provider/doppler/).
 
 ### External Secrets Operator Installation
 
@@ -34,7 +34,23 @@ Note we use the SkipDryRunOnMissingResource annotation to prevent the applicatio
 
 Next create an Argo CD application that points to the above customization file in your repository, here is an example:
 
-//TODO - Insert application here
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+        name: external-secrets
+        namespace: openshift-gitops
+    spec:
+        destination:
+            namespace: openshift-operators
+            server: https://kubernetes.default.svc
+        project: cluster-config
+        source:
+            path: components/apps/eso/overlays/aggregate
+            repoURL: https://github.com/gnunn-gitops/cluster-config.git
+            targetRevision: HEAD
+        syncPolicy:
+            automated:
+                selfHeal: true
 
 ### Signing up for Doppler
 
