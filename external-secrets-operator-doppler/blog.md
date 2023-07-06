@@ -78,7 +78,7 @@ Finally we need to configure an access token for ESO to use to be able to pull s
 
 In order for ESO to access a secrets provider we need to define a secrets store. ESO supports a ClusterSecretStore and SecretStore which are cluster and namespace scoped respectively. For simplicity, particularly since I operate in a homelab environment, I chose to use the ClusterSecretStore to provide cluster wide access to secrets.
 
-For folks operating in a more real environment I would recommend checking out the ESO multi-tenancy [documentation](https://external-secrets.io/v0.8.1/guides/multi-tenancy/). The TLDR; is that you will likely need to use the namespace scoped SecretStore to operate securely in a multi-tenant OpenShift environment.
+For folks operating in a more real environment I would recommend checking out the ESO multi-tenancy [documentation](https://external-secrets.io/v0.8.1/guides/multi-tenancy/). The TLDR; is that you will likely need to use the namespace scoped SecretStore to operate safely in a multi-tenant OpenShift environment.
 
 Here is an example of the ClusterSecretStore I am using:
 
