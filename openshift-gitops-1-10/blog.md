@@ -13,9 +13,9 @@ Red Hat is pleased to announce that version 1.10 of OpenShift GitOps has been re
 
 With this version, Argo CD has been upgraded to 2.8 which brings a number of new features and benefits including:
 
-* _ApplicationSet in Any Namespace (TP)_. Following the ability to deploy Argo CD Application objects in any namespace, with this release you can now deploy ApplicationSets in any namespace. Note that both features remain Technical Preview in this release.
 * _ApplicationSet Plugin Generator_. New in Argo CD 2.8 is the ability for users to create their own generators for ApplicationSets without having to go through the Argo CD release process. Plugin generators can be hosted as a sidecar or a standalone deployment and can be written in any language. Additional information on plugin generators can be found in the upstream [documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators-Plugin/).
 * _Legacy Configuration Management Plugins (CMP) Removed_. Support for legacy CMPs, those specified in `argo-cm` or via the operator `argocd.spec.configManagementPlugins`, has been deprecated for many versions in Argo CD and now in 2.8 has been removed. Please migrate your legacy plugins to the newer sidecar approach for which support is available in the Operator with `argocd.spec.repo.sidecarContainers`.
+* _Ignore Resource Updates_. Some operators constantly update their managed objects which leads to additional churn and logging in Argo CD. With this new feature, users can tune how Argo CD manages this for tracked resources. Note that at this time the operator does not directly support it but it can be enabled via `extraConfig`. The documentation for the feature is available [here](https://argo-cd.readthedocs.io/en/stable/operator-manual/reconcile/).
 
 #### Standalone GitOps documentation
 
