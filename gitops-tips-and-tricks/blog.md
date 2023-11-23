@@ -9,9 +9,9 @@ Similarly when it comes to GitOps there are a variety of QoL tips that can be do
 
 ### Use Annotation Tracking
 
-When deploying applications, Argo CD needs to track the resources in the cluster that it has deployed, By default both Argo CD and OpenShift GitOps use labels for the tracking method. While label tracking does the job, it can only include a limited amount of information due to the Kubernetes limit on labels of 63 characters.
+When deploying applications, Argo CD needs to [track the resources](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_tracking/#additional-tracking-methods-via-an-annotation) in the cluster that it has deployed, By default both Argo CD and OpenShift GitOps use labels for the tracking method. While label tracking does the job, it can only include a limited amount of information due to the Kubernetes limit on labels of 63 characters.
 
-This limitation manifests itself when Argo CD deploys resources that in turn generate additional resources, this is most commonly experienced deploying custom resources for operators. The operator will often copy all of the labels and annotations from the custom resource to the additional resources that Argo CD creates including the Argo CD tracking label.
+This limitation manifests itself when Argo CD deploys resources that in turn generate additional resources, this is most commonly experienced deploying custom resources for operators. The operator will often copy all of the labels and annotations from the custom resource to the additional resources that the operator creates including the Argo CD tracking label.
 
 While this is in general a desirable behavior, copying the tracking label causes Argo CD to treat the application as Out-of-Sync. This occurs because Argo CD sees the tracking label and thinks that it deployed the resource however it cannot find the resource in git since it was created by something else.
 
@@ -32,7 +32,9 @@ spec:
   ...
 ```
 
-Note that you will likely need to re-sync all applications after making this change, fortunately you can use the Argo CD to sync everything in one go.
+Note that you will likely need to re-sync all applications after making this change, fortunately you can use the Argo CD user interface to quickly sync everything in one go.
+
+![alt text](https://raw.githubusercontent.com/gnunn-gitops/blogs/main/gitops-tips-and-tricks/img/sync-all.png)
 
 There is an issue upstream to change the default tracking method from labels to annotations (or annotations+labels), however caution is warranted to avoid disruption in existing installations hence why it hasn't been made the default already,
 
