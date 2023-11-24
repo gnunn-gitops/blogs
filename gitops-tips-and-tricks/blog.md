@@ -37,7 +37,7 @@ Note that you will likely need to re-sync all applications after making this cha
 
 ![alt text](https://raw.githubusercontent.com/gnunn-gitops/blogs/main/gitops-tips-and-tricks/img/sync-all.png)
 
-There is an issue upstream to change the default tracking method from labels to annotations (or annotations+labels), however caution is warranted to avoid disruption in existing installations hence why it hasn't been made the default already,
+There is an [issue](https://github.com/argoproj/argo-cd/issues/13981) upstream to change the default tracking method from labels to annotations (or annotations+labels), however caution is warranted to avoid disruption in existing installations hence why it hasn't been made the default already,
 
 ### Overide automatic sync for App of Apps
 
